@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор расхода топлива</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        margin: 50px auto;
+        width: 300px;
+        text-align: center;
+    }
+    input[type="number"] {
+        width: 90%;
+        padding: 9px;
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        margin-top: 35px;
+    }
+    #result{
+        margin-top: 15px;
+    }
+    #distance{
+        margin-top: 10px;
+    }
+    #fuel{
+        margin-top: 10px;
+    }
+    .Vlad{
+        color: #00000024;
+        font-size: 25px;
+        margin-top: 96px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Калькулятор расхода топлива</h2>
+    <label for="distance">Пройденное расстояние (км):</label>
+    <input type="number" id="distance" name="distance">
+    <label for="fuel">Расход топлива (л/100км):</label>
+    <input type="number" id="fuel" name="fuel">
+    <button onclick="calculate()">Рассчитать</button>
+    <div id="result"></div>
+    <h1 class="Vlad"> Автор: Vlad T9</h1>
+</div>
+
+<script>
+    function calculate() {
+        var d = document.getElementById("distance").value;
+        var f = document.getElementById("fuel").value;
+
+        // Рассчитываем расход топлива
+        var c = (f / d) * 100;
+
+        // Выводим результат
+        document.getElementById("result").innerHTML = "Расход топлива: " + c.toFixed(2) + " л";
+
+        var norm=27;
+
+        var resultText = "Расход топлива: " + c.toFixed(2) +  "литров";
+
+        if (c>norm) {
+            resultText += "<br> Расход выше нормы!"
+        }
+        else {
+            resultText += "<br> Расход в норме! <br> Это отлично!" 
+        }
+
+    document.getElementById("result").innerHTML = resultText;
+    }
+</script>
+
+</body>
+</html>
